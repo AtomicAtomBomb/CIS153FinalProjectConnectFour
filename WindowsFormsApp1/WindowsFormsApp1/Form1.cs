@@ -16,5 +16,33 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            VsRobot robotplay = new VsRobot();
+            robotplay.Show();
+            this.Hide();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            VsPlayer secondform = new VsPlayer();
+            secondform.Show();
+            this.Hide();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void button4_Click(object sender, EventArgs e)
+        {
+            System.Environment.Exit(0);
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
