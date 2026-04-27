@@ -33,7 +33,16 @@ namespace WindowsFormsApp1
 
         private void button3_Click(object sender, EventArgs e)
         {
+            //Creating the stats form
+            StatsForm stats = new StatsForm();
 
+            //Setting the location so the window doesn't jump around
+            stats.StartPosition = FormStartPosition.Manual;
+            stats.Location = this.Location;
+
+            //Showing the stats and hiding the menu
+            stats.Show();
+            this.Hide();
         }
         private void button4_Click(object sender, EventArgs e)
         {

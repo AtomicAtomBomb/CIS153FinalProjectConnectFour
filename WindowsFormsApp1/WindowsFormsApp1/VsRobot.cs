@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace WindowsFormsApp1
 {
@@ -52,7 +53,7 @@ namespace WindowsFormsApp1
             //I try to drop the piece. If it works, I check if the player won.
             if (getboard.DropPiece(col, 1))
             {
-                if (CheckGameState(1)) return; // Stop everything if the player just won
+                if (CheckGameState(1)) return; //Stop everything if the player just won
 
                 //Now it's the computer's turn
                 player1Turn = false;
