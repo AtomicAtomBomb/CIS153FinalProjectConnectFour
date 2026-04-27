@@ -129,75 +129,74 @@ namespace WindowsFormsApp1
 
         public int CheckForWin()
         {
-            //1. Check Horizontal (Rows)
-            for (int r = 0; r < rows; r++)
             {
-                for (int c = 0; c < columns - 3; c++)
+                //1.Check Horizontal (Rows)
+                for (int r = 0; r < rows; r++)
                 {
-                    if (gameboard[r, c] == null)
+                    for (int c = 0; c < columns - 3; c++)
                     {
-                        continue;
-                    }
-                    int s = gameboard[r, c].getStatus();
-                    if (s != 0 && s == gameboard[r, c + 1].getStatus() &&
-                        s == gameboard[r, c + 2].getStatus() &&
-                        s == gameboard[r, c + 3].getStatus())
-                        return s; //Returns 1 or 2 depending on who won
-                }
-            }
+                        if (gameboard[r, c] == null) continue;
+                        int s = gameboard[r, c].getStatus();
 
-            //2. Check Vertical (Columns)
-            for (int r = 0; r < rows - 3; r++)
-            {
-                for (int c = 0; c < columns; c++)
+                        //Added safety checks before asking for the next cell's status
+                        if (s != 0 &&
+                            gameboard[r, c + 1] != null && s == gameboard[r, c + 1].getStatus() &&
+                            gameboard[r, c + 2] != null && s == gameboard[r, c + 2].getStatus() &&
+                            gameboard[r, c + 3] != null && s == gameboard[r, c + 3].getStatus())
+                            return s; //Returns 1 or 2 depending on who won
+                    }
+                }
+
+                //2. Check Vertical (Columns)
+                for (int r = 0; r < rows - 3; r++)
                 {
-                    if (gameboard[r, c] == null)
+                    for (int c = 0; c < columns; c++)
                     {
-                        continue;
-                    }
-                    int s = gameboard[r, c].getStatus();
-                    if (s != 0 && s == gameboard[r + 1, c].getStatus() &&
-                        s == gameboard[r + 2, c].getStatus() &&
-                        s == gameboard[r + 3, c].getStatus())
-                        return s;
-                }
-            }
+                        if (gameboard[r, c] == null) continue;
+                        int s = gameboard[r, c].getStatus();
 
-            //3. Check Diagonal (Down-Right)
-            for (int r = 0; r < rows - 3; r++)
-            {
-                for (int c = 0; c < columns - 3; c++)
+                        if (s != 0 &&
+                            gameboard[r + 1, c] != null && s == gameboard[r + 1, c].getStatus() &&
+                            gameboard[r + 2, c] != null && s == gameboard[r + 2, c].getStatus() &&
+                            gameboard[r + 3, c] != null && s == gameboard[r + 3, c].getStatus())
+                            return s;
+                    }
+                }
+
+                //3. Check Diagonal (Down-Right)
+                for (int r = 0; r < rows - 3; r++)
                 {
-                    if (gameboard[r, c] == null)
+                    for (int c = 0; c < columns - 3; c++)
                     {
-                        continue;
-                    }
-                    int s = gameboard[r, c].getStatus();
-                    if (s != 0 && s == gameboard[r + 1, c + 1].getStatus() &&
-                        s == gameboard[r + 2, c + 2].getStatus() &&
-                        s == gameboard[r + 3, c + 3].getStatus())
-                        return s;
-                }
-            }
+                        if (gameboard[r, c] == null) continue;
+                        int s = gameboard[r, c].getStatus();
 
-            //4. Check Diagonal (Up-Right)
-            for (int r = 3; r < rows; r++)
-            {
-                for (int c = 0; c < columns - 3; c++)
+                        if (s != 0 &&
+                            gameboard[r + 1, c + 1] != null && s == gameboard[r + 1, c + 1].getStatus() &&
+                            gameboard[r + 2, c + 2] != null && s == gameboard[r + 2, c + 2].getStatus() &&
+                            gameboard[r + 3, c + 3] != null && s == gameboard[r + 3, c + 3].getStatus())
+                            return s;
+                    }
+                }
+
+                //4. Check Diagonal (Up-Right)
+                for (int r = 3; r < rows; r++)
                 {
-                    if (gameboard[r, c] == null)
+                    for (int c = 0; c < columns - 3; c++)
                     {
-                        continue;
-                    }
-                    int s = gameboard[r, c].getStatus();
-                    if (s != 0 && s == gameboard[r - 1, c + 1].getStatus() &&
-                        s == gameboard[r - 2, c + 2].getStatus() &&
-                        s == gameboard[r - 3, c + 3].getStatus())
-                        return s;
-                }
-            }
+                        if (gameboard[r, c] == null) continue;
+                        int s = gameboard[r, c].getStatus();
 
-            return 0; //No winner yet
+                        if (s != 0 &&
+                            gameboard[r - 1, c + 1] != null && s == gameboard[r - 1, c + 1].getStatus() &&
+                            gameboard[r - 2, c + 2] != null && s == gameboard[r - 2, c + 2].getStatus() &&
+                            gameboard[r - 3, c + 3] != null && s == gameboard[r - 3, c + 3].getStatus())
+                            return s;
+                    }
+                }
+
+                return 0; //No winner yet
+            }
         }
         public Board()
         {

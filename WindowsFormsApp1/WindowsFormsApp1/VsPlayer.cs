@@ -15,6 +15,8 @@ namespace WindowsFormsApp1
         bool player1Turn = true;
         bool player2Turn = false;
         Board getboard;
+
+        public bool reviewMode = false;
         public VsPlayer()
         {
             InitializeComponent();
