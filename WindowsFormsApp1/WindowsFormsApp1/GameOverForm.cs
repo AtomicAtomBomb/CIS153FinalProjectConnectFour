@@ -88,5 +88,41 @@ namespace WindowsFormsApp1
         {
             Application.Exit();
         }
+
+        private void btn_PlayAgain_Click_1(object sender, EventArgs e)
+        {
+            
+            if (previousGameBoard is VsRobot)
+            {
+                VsRobot newform = new VsRobot();
+                newform.Show();
+                this.Hide();
+            }
+            else if (previousGameBoard is VsPlayer)
+            {
+                VsPlayer newform = new VsPlayer();
+                newform.Show();
+                this.Hide();
+            }
+            
+        }
+
+        private void btn_ReviewGame_Click_1(object sender, EventArgs e)
+        {
+            previousGameBoard.Show();
+            this.Hide();
+        }
+
+        private void btn_Exit_Click_1(object sender, EventArgs e)
+        {
+            System.Environment.Exit(0);
+        }
+
+        private void btn_Main_Click(object sender, EventArgs e)
+        {
+            Form1 main = new Form1();
+            main.Show();
+            this.Hide();
+        }
     }
 }
