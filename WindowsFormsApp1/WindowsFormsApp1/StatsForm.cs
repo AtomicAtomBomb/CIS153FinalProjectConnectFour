@@ -36,26 +36,58 @@ namespace WindowsFormsApp1
                 double total = double.Parse(data[3]);
 
                 //I update all the labels on the screen with our data
-                lbl_PlayerWins.Text = "Player Wins: " + pWins;
-                lbl_AIWins.Text = "AI Wins: " + aWins;
-                lbl_Ties.Text = "Ties: " + ties;
-                lbl_TotalGames.Text = "Total Games: " + total;
+                lbl_PlayerWins.Text = "" + pWins;
+                lbl_AIWins.Text = "" + aWins;
+                lbl_Ties.Text = "" + ties;
+                lbl_TotalGames.Text = "" + total;
 
                 //I calculate the win percentages here, making sure we don't divide by zero!
                 if (total > 0)
                 {
-                    lbl_PlayerPercent.Text = "Player Win %: " + Math.Round((pWins / total) * 100, 1) + "%";
-                    lbl_AIPercent.Text = "AI Win %: " + Math.Round((aWins / total) * 100, 1) + "%";
+                    lbl_PlayerPercent.Text = "" + Math.Round((pWins / total) * 100, 1) + "%";
+                    lbl_AIPercent.Text = "" + Math.Round((aWins / total) * 100, 1) + "%";
                 }
-            }
-            else
-            {
-                //If they open stats before ever playing a game, I just show this message
-                lbl_TotalGames.Text = "No games played yet.";
+                else if (total == 0)
+                {
+                    lbl_TotalGames.Text = "None";
+                    lbl_PlayerPercent.Text = "None";
+                    lbl_AIPercent.Text = "None";
+                }
             }
         }
 
-        private void btnMainMenu_Click(object sender, EventArgs e)
+        private void clearStats()
+        {
+            string path = "stats.txt";
+            if (File.Exists(path))
+            {
+                string[] data = File.ReadAllText(path).Split(',');
+
+                double pWins;
+                double aWins;
+                double ties;
+                double total;
+
+                pWins = 0;
+                aWins = 0;
+                ties = 0;
+                total = 0;
+
+                System.IO.File.WriteAllText(path, $"{pWins},{aWins},{ties},{total}");
+
+                pWins = double.Parse(data[0]);
+                aWins = double.Parse(data[1]);
+                ties = double.Parse(data[2]);
+                total = double.Parse(data[3]);
+
+                lbl_PlayerWins.Text = "" + pWins;
+                lbl_AIWins.Text = "" + aWins;
+                lbl_Ties.Text = "" + ties;
+                lbl_TotalGames.Text = "" + total;
+            }
+        }
+
+        private void btn_StatsReturn_Click(object sender, EventArgs e)
         {
             //Sending the user back to the main menu at the exact same screen location
             Form1 menuForm = new Form1();
@@ -63,6 +95,11 @@ namespace WindowsFormsApp1
             menuForm.Location = this.Location;
             menuForm.Show();
             this.Hide();
+        }
+
+        private void btn_StatsReset_Click(object sender, EventArgs e)
+        {
+            clearStats();
         }
     }
 }

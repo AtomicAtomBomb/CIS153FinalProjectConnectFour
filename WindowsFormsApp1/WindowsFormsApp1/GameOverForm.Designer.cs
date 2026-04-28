@@ -37,9 +37,11 @@
             // lbl_Result
             // 
             this.lbl_Result.AutoSize = true;
-            this.lbl_Result.Location = new System.Drawing.Point(378, 180);
+            this.lbl_Result.BackColor = System.Drawing.Color.MintCream;
+            this.lbl_Result.Font = new System.Drawing.Font("Stencil", 25F);
+            this.lbl_Result.Location = new System.Drawing.Point(272, 181);
             this.lbl_Result.Name = "lbl_Result";
-            this.lbl_Result.Size = new System.Drawing.Size(53, 13);
+            this.lbl_Result.Size = new System.Drawing.Size(217, 40);
             this.lbl_Result.TabIndex = 0;
             this.lbl_Result.Text = "lbl_Result";
             // 
@@ -47,25 +49,25 @@
             // 
             this.btn_PlayAgain.Location = new System.Drawing.Point(174, 286);
             this.btn_PlayAgain.Name = "btn_PlayAgain";
-            this.btn_PlayAgain.Size = new System.Drawing.Size(75, 23);
+            this.btn_PlayAgain.Size = new System.Drawing.Size(132, 38);
             this.btn_PlayAgain.TabIndex = 1;
             this.btn_PlayAgain.Text = "btn_PlayAgain";
             this.btn_PlayAgain.UseVisualStyleBackColor = true;
             // 
             // btn_ReviewGame
             // 
-            this.btn_ReviewGame.Location = new System.Drawing.Point(356, 286);
+            this.btn_ReviewGame.Location = new System.Drawing.Point(312, 286);
             this.btn_ReviewGame.Name = "btn_ReviewGame";
-            this.btn_ReviewGame.Size = new System.Drawing.Size(75, 23);
+            this.btn_ReviewGame.Size = new System.Drawing.Size(132, 38);
             this.btn_ReviewGame.TabIndex = 2;
             this.btn_ReviewGame.Text = "btn_ReviewGame";
             this.btn_ReviewGame.UseVisualStyleBackColor = true;
             // 
             // btn_Exit
             // 
-            this.btn_Exit.Location = new System.Drawing.Point(499, 286);
+            this.btn_Exit.Location = new System.Drawing.Point(450, 286);
             this.btn_Exit.Name = "btn_Exit";
-            this.btn_Exit.Size = new System.Drawing.Size(75, 23);
+            this.btn_Exit.Size = new System.Drawing.Size(132, 38);
             this.btn_Exit.TabIndex = 3;
             this.btn_Exit.Text = "btn_Exit";
             this.btn_Exit.UseVisualStyleBackColor = true;
@@ -74,6 +76,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.MidnightBlue;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.btn_Exit);
             this.Controls.Add(this.btn_ReviewGame);
