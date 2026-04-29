@@ -75,11 +75,6 @@ namespace WindowsFormsApp1
 
                 System.IO.File.WriteAllText(path, $"{pWins},{aWins},{ties},{total}");
 
-                pWins = double.Parse(data[0]);
-                aWins = double.Parse(data[1]);
-                ties = double.Parse(data[2]);
-                total = double.Parse(data[3]);
-
                 lbl_PlayerWins.Text = "" + pWins;
                 lbl_AIWins.Text = "" + aWins;
                 lbl_Ties.Text = "" + ties;
@@ -100,6 +95,8 @@ namespace WindowsFormsApp1
         private void btn_StatsReset_Click(object sender, EventArgs e)
         {
             clearStats();
+            lbl_PlayerPercent.Text = "None";
+            lbl_AIPercent.Text = "None";
         }
     }
 }
