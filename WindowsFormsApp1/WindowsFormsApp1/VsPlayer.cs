@@ -111,11 +111,6 @@ namespace WindowsFormsApp1
                         endScreen.Show();
                         this.Hide();
                     }
-                    if (winner != 0)
-                    {
-                        SaveStats(winner);
-                        MessageBox.Show("Player " + winner + " wins!");
-                    }
                 }
             }
             else if (player2Turn == true)
@@ -152,35 +147,38 @@ namespace WindowsFormsApp1
                         endScreen.Show();
                         this.Hide();
                     }
-                    if (winner != 0)
-                    {
-                        SaveStats(winner);
-                        this.Hide();
-                        MessageBox.Show("Player " + winner + " wins!");
-                    }
                 }
             }
         }
 
         private void OnCellClick(object sender, EventArgs e)
         {
-            Button btn = (Button)sender;
+            if (!reviewMode)
+            {
+                Button btn = (Button)sender;
 
-            HandleMove(btn);
+                HandleMove(btn);
+            }
         }
 
         private void CellShowPreview(object sender, EventArgs e)
         {
-            Button btn = (Button)sender;
+            if (!reviewMode)
+            {
+                Button btn = (Button)sender;
 
-            movePreview(btn);
+                movePreview(btn);
+            }
         }
 
         private void CellClearPreview(object sender, EventArgs e)
         {
-            Button btn = (Button)sender;
+            if (!reviewMode)
+            {
+                Button btn = (Button)sender;
 
-            clearPreview(btn);
+                clearPreview(btn);
+            }
         }
 
         private void movePreview(Button clickedButton)
@@ -248,6 +246,12 @@ namespace WindowsFormsApp1
 
             //I save everything back to the text file separated by commas
             System.IO.File.WriteAllText(path, $"{pWins},{aWins},{ties},{total}");
+        }
+
+        //This closes the entire program when the user clicks the x on the top bar.
+        private void VsPlayer_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            System.Environment.Exit(0);
         }
     }
 

@@ -97,7 +97,7 @@ namespace WindowsFormsApp1
                 VsRobot newform = new VsRobot();
                 newform.Show();
                 this.Hide();
-            }
+            }   
             else if (previousGameBoard is VsPlayer)
             {
                 VsPlayer newform = new VsPlayer();
@@ -123,6 +123,11 @@ namespace WindowsFormsApp1
             Form1 main = new Form1();
             main.Show();
             this.Hide();
+        }
+
+        private void GameOverForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            System.Environment.Exit(0);
         }
     }
 }

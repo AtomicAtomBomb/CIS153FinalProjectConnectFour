@@ -98,5 +98,15 @@ namespace WindowsFormsApp1
             lbl_PlayerPercent.Text = "None";
             lbl_AIPercent.Text = "None";
         }
+
+        private void btn_exit_Click(object sender, EventArgs e)
+        {
+            System.Environment.Exit(0);
+        }
+
+        private void StatsForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            System.Environment.Exit(0);
+        }
     }
 }

@@ -472,6 +472,7 @@
             this.Controls.Add(this.btn_0_0);
             this.Name = "VsPlayer";
             this.Text = "VsPlayer";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.VsPlayer_FormClosing);
             this.Load += new System.EventHandler(this.VsPlayer_Load_1);
             this.ResumeLayout(false);
 

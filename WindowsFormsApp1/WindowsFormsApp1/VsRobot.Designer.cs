@@ -472,6 +472,7 @@
             this.Controls.Add(this.btn_0_0);
             this.Name = "VsRobot";
             this.Text = "VsRobot";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.VsRobot_FormClosing);
             this.Load += new System.EventHandler(this.VsRobot_Load);
             this.ResumeLayout(false);
 

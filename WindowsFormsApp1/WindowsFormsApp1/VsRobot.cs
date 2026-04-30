@@ -81,18 +81,17 @@ namespace WindowsFormsApp1
 
             //RULE 3: If no one is about to win, I use basic strategy
             //I tell the AI to prefer the middle columns over the outside edges
-            if (bestCol==-1)
+            if (bestCol == -1)
             {
-                    Random num = new Random();
-                    colpos = num.Next(0, 6);
-                if (getboard.getcell(0,colpos).getStatus()!=0)
+                Random num = new Random();
+                colpos = num.Next(0, 6);
+                if (getboard.getcell(0,colpos).getStatus() != 0)
                 {
                     colpos = num.Next(0, 6);
                 }
                 if (getboard.getcell(0, colpos).getStatus() == 0)
                 {
                     bestCol = colpos;
-
                 }    
             }
 
@@ -220,16 +219,22 @@ namespace WindowsFormsApp1
         }
         private void CellShowPreview(object sender, EventArgs e)
         {
-            Button btn = (Button)sender;
+            if (!reviewMode)
+            {
+                Button btn = (Button)sender;
 
-            movePreview(btn);
+                movePreview(btn);
+            }
         }
 
         private void CellClearPreview(object sender, EventArgs e)
         {
-            Button btn = (Button)sender;
+            if (!reviewMode)
+            {
+                Button btn = (Button)sender;
 
-            clearPreview(btn);
+                clearPreview(btn);
+            }
         }
 
         private void movePreview(Button clickedButton)
@@ -258,6 +263,11 @@ namespace WindowsFormsApp1
             Form1 form1 = new Form1();
             form1.Show();
             this.Hide();
+        }
+
+        private void VsRobot_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            System.Environment.Exit(0);
         }
     }
 

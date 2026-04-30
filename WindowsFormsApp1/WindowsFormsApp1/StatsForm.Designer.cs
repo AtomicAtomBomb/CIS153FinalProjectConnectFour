@@ -42,6 +42,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.btn_StatReset = new System.Windows.Forms.Button();
+            this.btn_exit = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lbl_PlayerWins
@@ -106,7 +107,7 @@
             // 
             // btn_StatsReturn
             // 
-            this.btn_StatsReturn.Location = new System.Drawing.Point(176, 362);
+            this.btn_StatsReturn.Location = new System.Drawing.Point(122, 362);
             this.btn_StatsReturn.Name = "btn_StatsReturn";
             this.btn_StatsReturn.Size = new System.Drawing.Size(115, 46);
             this.btn_StatsReturn.TabIndex = 6;
@@ -182,13 +183,23 @@
             // 
             // btn_StatReset
             // 
-            this.btn_StatReset.Location = new System.Drawing.Point(428, 362);
+            this.btn_StatReset.Location = new System.Drawing.Point(507, 362);
             this.btn_StatReset.Name = "btn_StatReset";
             this.btn_StatReset.Size = new System.Drawing.Size(115, 46);
             this.btn_StatReset.TabIndex = 6;
             this.btn_StatReset.Text = "Reset Stats";
             this.btn_StatReset.UseVisualStyleBackColor = true;
             this.btn_StatReset.Click += new System.EventHandler(this.btn_StatsReset_Click);
+            // 
+            // btn_exit
+            // 
+            this.btn_exit.Location = new System.Drawing.Point(321, 362);
+            this.btn_exit.Name = "btn_exit";
+            this.btn_exit.Size = new System.Drawing.Size(115, 46);
+            this.btn_exit.TabIndex = 6;
+            this.btn_exit.Text = "Exit";
+            this.btn_exit.UseVisualStyleBackColor = true;
+            this.btn_exit.Click += new System.EventHandler(this.btn_exit_Click);
             // 
             // StatsForm
             // 
@@ -203,6 +214,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btn_StatReset);
+            this.Controls.Add(this.btn_exit);
             this.Controls.Add(this.btn_StatsReturn);
             this.Controls.Add(this.lbl_AIPercent);
             this.Controls.Add(this.lbl_PlayerPercent);
@@ -212,6 +224,7 @@
             this.Controls.Add(this.lbl_PlayerWins);
             this.Name = "StatsForm";
             this.Text = "StatsForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.StatsForm_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -233,5 +246,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btn_StatReset;
+        private System.Windows.Forms.Button btn_exit;
     }
 }

@@ -66,7 +66,7 @@
             this.btn_ReviewGame.TabIndex = 2;
             this.btn_ReviewGame.Text = "Review Board";
             this.btn_ReviewGame.UseVisualStyleBackColor = true;
-            this.btn_ReviewGame.Click += new System.EventHandler(this.btn_ReviewGame_Click_1);
+            this.btn_ReviewGame.Click += new System.EventHandler(this.btn_ReviewGame_Click);
             // 
             // btn_Exit
             // 
@@ -105,6 +105,7 @@
             this.Controls.Add(this.lbl_Result);
             this.Name = "GameOverForm";
             this.Text = "GameOverForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.GameOverForm_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 
