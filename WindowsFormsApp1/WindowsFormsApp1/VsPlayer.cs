@@ -17,13 +17,13 @@ namespace WindowsFormsApp1
         bool player1Turn = true;
         bool player2Turn = false;
         Board getboard;
-
         public bool reviewMode = false;
         public VsPlayer()
         {
             InitializeComponent();
             getboard = new Board();
             setupboard();
+            lbl_P1Active.Visible = true;    //always begin with player 1 move
             //getboard.getcell(0, 5).getButton().BackColor = Color.Green;
             //the above line doesnt matter, I included this so you two can know how to pull a specific point, 
             //each button is individually named so in the instance you need to know a specific point check names
@@ -62,7 +62,6 @@ namespace WindowsFormsApp1
         }
         private void VsPlayer_Load(object sender, EventArgs e)
         {
-
         }
 
         public void revertButtonColor(object sender, EventArgs e)
@@ -80,6 +79,8 @@ namespace WindowsFormsApp1
             if (player1Turn == true)
             {
                 bool moveWasLegal = getboard.DropPiece(col, 1);
+                lbl_P2Active.Visible = true;
+                lbl_P1Active.Visible = false;
                 player1Turn = false;
                 player2Turn = true;
                 if (moveWasLegal)
@@ -118,6 +119,8 @@ namespace WindowsFormsApp1
                 bool moveWasLegal = getboard.DropPiece(col, 2);
                 player2Turn = false;
                 player1Turn = true;
+                lbl_P1Active.Visible = true;
+                lbl_P2Active.Visible = false;
                 if (moveWasLegal)
                 {
                     int winner = getboard.CheckForWin();
@@ -137,7 +140,8 @@ namespace WindowsFormsApp1
 
                         //I save the stats to our text file right as the game ends
                         SaveStats(winner);
-
+                        lbl_P2Active.Visible = false;
+                        lbl_P1Active.Visible = false;
                         //I open the Game Over screen and pass it this form so we can review it later
                         btn_Return.Visible = true;
                         GameOverForm endScreen = new GameOverForm(this, result);
@@ -252,6 +256,16 @@ namespace WindowsFormsApp1
         private void VsPlayer_FormClosing(object sender, FormClosingEventArgs e)
         {
             System.Environment.Exit(0);
+        }
+
+        private void lbl_P1Active_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+           
         }
     }
 

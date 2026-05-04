@@ -27,6 +27,7 @@ namespace WindowsFormsApp1
             InitializeComponent();
             getboard = new Board();
             setupboard();
+            lbl_P1Status.Visible = true;
         }
 
         public void setupboard()
@@ -205,9 +206,27 @@ namespace WindowsFormsApp1
 
             //I update the numbers based on who just won
             total++;
-            if (winner == 1) pWins++;
-            else if (winner == 2) aWins++;
-            else ties++;
+            if (winner == 1)
+            {
+                pWins++;
+                lbl_AIStatus.Visible = true;
+                lbl_P1Status.Text = "WINNER";
+                lbl_AIStatus.Text = "LOSER";
+            }
+            else if (winner == 2)
+            {
+                aWins++;
+                lbl_AIStatus.Visible = true;
+                lbl_AIStatus.Text = "WINNER";
+                lbl_P1Status.Text = "LOSER";
+            }
+            else
+            {
+                ties++;
+                lbl_AIStatus.Visible = true;
+                lbl_P1Status.Text = "TIED";
+                lbl_AIStatus.Text = "TIED";
+            }
 
             //I save everything back to the text file separated by commas
             System.IO.File.WriteAllText(path, $"{pWins},{aWins},{ties},{total}");
@@ -268,6 +287,11 @@ namespace WindowsFormsApp1
         private void VsRobot_FormClosing(object sender, FormClosingEventArgs e)
         {
             System.Environment.Exit(0);
+        }
+
+        private void lbl_P1Status_Click(object sender, EventArgs e)
+        {
+
         }
     }
 
