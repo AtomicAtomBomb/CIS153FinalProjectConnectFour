@@ -17,7 +17,8 @@ namespace WindowsFormsApp1
         bool player1Turn = true;
         int p = 0;
         int colpos;
-        
+        int rows = 0;
+        int cols = 0;
         //I added this flag to lock the board when we are just reviewing a finished game
         public bool reviewMode = false;
         bool gameover = false;
@@ -86,7 +87,9 @@ namespace WindowsFormsApp1
             {
                 Random num = new Random();
                 colpos = num.Next(0, 6);
-                if (getboard.getcell(0,colpos).getStatus() != 0)
+              
+                
+                while (getboard.getcell(0,colpos).getStatus() != 0)
                 {
                     colpos = num.Next(0, 6);
                 }
@@ -95,7 +98,7 @@ namespace WindowsFormsApp1
                     bestCol = colpos;
                 }    
             }
-
+            
             //if (bestCol == -1)
             //{
 
@@ -117,7 +120,21 @@ namespace WindowsFormsApp1
             CheckGameState(2); //Check if the AI just won
             player1Turn = true; //Give the turn back to the player
         }
-
+        //private bool tiecheck()
+        //{
+        //    for (int r=0;r<Board.rows;r++)
+        //    {
+        //        for (int c=0;c<Board.columns;c++)
+        //        {
+        //            if (getboard.getcell(r,c).getStatus()==0)
+        //            {
+        //                return false;
+        //                //tie has not been met
+        //            }
+        //        }
+        //    }
+        //    return true;
+        //}
         //I made this helper method for the AI to "test" dropping a piece to see if it causes a win
         private int FindWinningColumn(int playerNum)
         {
@@ -147,13 +164,24 @@ namespace WindowsFormsApp1
             }
             return -1; //Return -1 if I couldn't find any winning moves
         }
-
+        private bool checkfortie()
+        {
+           for (int r=0;r<Board.rows-1;r++)
+            {
+                Cell cell = getboard.getcell(0,r);
+                if (cell.getStatus()==0)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
         private bool CheckGameState(int playerNum)
         {
             int winner = getboard.CheckForWin();
 
             //I check for a tie by seeing if the entire top row is full
-            bool isDraw = true;
+            bool isDraw = false;
             for (int i = 0; i < Board.columns; i++)
             {
                 //NEW FIX: Grab the cell first to make sure it actually exists
@@ -161,10 +189,14 @@ namespace WindowsFormsApp1
 
                 //SAFETY CHECK: If the cell is completely missing (null), 
                 //OR if it exists and is empty (status 0), it is NOT a draw yet
-                if (topCell == null || topCell.getStatus() == 0)
+                if (checkfortie())
                 {
-                    isDraw = false;
+                    isDraw = true;
                 }
+                //if (topCell == null || topCell.getStatus() == 0)
+                //{
+                //    isDraw = false;
+                //}
             }
 
             //If someone won or it's a tie, the game is over

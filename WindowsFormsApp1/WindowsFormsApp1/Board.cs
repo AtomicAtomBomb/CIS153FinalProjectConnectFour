@@ -43,6 +43,7 @@ namespace WindowsFormsApp1
             for (int r = rows - 1; r >= 0; r--)
             {
                 ClearStatusAndColor(col);
+                if (r>=0 && r<rows && col>=0 && col<columns)
                 if (gameboard[r, col].getStatus() == 0)
                 {
                     gameboard[r, col].setStatus(playerNum);
@@ -107,6 +108,7 @@ namespace WindowsFormsApp1
         {
             for (int r = 0; r < rows; r++)
             {
+                if (r>=0 && r<rows && col>=0 && col<columns)
                 if (gameboard[r, col].getStatus() == 1 || gameboard[r, col].getStatus() == 2)
                 {
                     continue;

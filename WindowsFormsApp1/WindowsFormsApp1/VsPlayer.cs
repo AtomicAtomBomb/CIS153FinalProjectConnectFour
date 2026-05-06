@@ -71,7 +71,18 @@ namespace WindowsFormsApp1
                 button.BackColor = Color.White;
             }
         }
-
+        private bool checkfortie()
+        {
+            for (int r = 0; r < Board.rows - 1; r++)
+            {
+                Cell cell = getboard.getcell(0, r);
+                if (cell.getStatus() == 0)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
         private void HandleMove(Button clickedButton)
         {
                 int lastUnderscore = clickedButton.Name.LastIndexOf('_');
@@ -124,16 +135,20 @@ namespace WindowsFormsApp1
                 if (moveWasLegal)
                 {
                     int winner = getboard.CheckForWin();
-                    bool isDraw = true;
-                    for (int i = 0; i < Board.columns; i++)
+                    bool isDraw = false;
+                    if (checkfortie())
                     {
-                        Cell topCell = getboard.getcell(0, i);
-
-                        if (topCell == null || topCell.getStatus() == 0)
-                        {
-                            isDraw = false;
-                        }
+                        isDraw = true;
                     }
+                    //for (int i = 0; i < Board.columns; i++)
+                    //{
+                    //    Cell topCell = getboard.getcell(0, i);
+
+                    //    if (topCell == null || topCell.getStatus() == 0)
+                    //    {
+                    //        isDraw = false;
+                    //    }
+                    //}
                     if (winner != 0 || isDraw)
                     {
                         string result = isDraw ? "Draw" : "Player " + winner;
