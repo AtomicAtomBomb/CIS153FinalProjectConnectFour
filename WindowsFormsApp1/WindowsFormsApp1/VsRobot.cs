@@ -83,36 +83,35 @@ namespace WindowsFormsApp1
 
             //RULE 3: If no one is about to win, I use basic strategy
             //I tell the AI to prefer the middle columns over the outside edges
-            if (bestCol == -1)
-            {
-                Random num = new Random();
-                colpos = num.Next(0, 6);
-              
-                
-                while (getboard.getcell(0,colpos).getStatus() != 0)
-                {
-                    colpos = num.Next(0, 6);
-                }
-                if (getboard.getcell(0, colpos).getStatus() == 0)
-                {
-                    bestCol = colpos;
-                }    
-            }
-            
             //if (bestCol == -1)
             //{
+            //    Random num = new Random();
+            //    colpos = num.Next(0, 6);
 
-            //    int[] preferredMoves = { 3, 2, 4, 1, 5, 0, 6 };
-            //    foreach (int col in preferredMoves)
+
+            //    while (getboard.getcell(0,colpos).getStatus() != 0)
             //    {
-            //        //I make sure the column isn't full before picking it
-            //        if (getboard.getcell(0, col).getStatus() == 0)
-            //        {
-            //            bestCol = col;
-            //            break;
-            //        }
+            //        colpos = num.Next(0, 6);
             //    }
+            //    if (getboard.getcell(0, colpos).getStatus() == 0)
+            //    {
+            //        bestCol = colpos;
+            //    }    
             //}
+
+            if (bestCol == -1)
+            {
+                int[] preferredMoves = { 3, 2, 4, 1, 5, 0, 6 };
+                foreach (int col in preferredMoves)
+                {
+                    //I make sure the column isn't full before picking it
+                    if (getboard.getcell(0, col).getStatus() == 0)
+                    {
+                        bestCol = col;
+                        break;
+                    }
+                }
+            }
 
             //Drop the AI's piece in the column I decided on
             p++;
@@ -120,22 +119,6 @@ namespace WindowsFormsApp1
             CheckGameState(2); //Check if the AI just won
             player1Turn = true; //Give the turn back to the player
         }
-        //private bool tiecheck()
-        //{
-        //    for (int r=0;r<Board.rows;r++)
-        //    {
-        //        for (int c=0;c<Board.columns;c++)
-        //        {
-        //            if (getboard.getcell(r,c).getStatus()==0)
-        //            {
-        //                return false;
-        //                //tie has not been met
-        //            }
-        //        }
-        //    }
-        //    return true;
-        //}
-        //I made this helper method for the AI to "test" dropping a piece to see if it causes a win
         private int FindWinningColumn(int playerNum)
         {
             for (int col = 0; col < Board.columns; col++)
